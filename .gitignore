@@ -1,0 +1,162 @@
+# ====================
+# Node.js
+# ====================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# dotenv
+.env
+.env.*
+
+# ====================
+# C#
+# ====================
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+*.dbmdl
+*.log
+*.pidb
+*.obj/
+*.dll
+*.exe
+*.cache
+*.pdb
+*.mdb
+*.csproj.user
+*.nuget/
+*.ncrunchproject
+*.ncrunchsolution
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+TestResults/
+packages/
+bin/
+obj/
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# ====================
+# Python
+# ====================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+.Python
+env/
+venv/
+ENV/
+.build/
+dist/
+.eggs/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.coverage
+.tox/
+.ipynb_checkpoints/
+.cache/
+*.log
+
+# ====================
+# Frontend (general)
+# ====================
+dist/
+build/
+out/
+.next/
+.next-cache/
+.cache/
+coverage/
+*.log
+.vscode/
+
+# ====================
+# OS / Tools
+# ====================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+*.swp
+*.bak
+*.tmp
+
+# ====================
+# Git
+# ====================
+*.orig
+*.rej
+*.patch
+*.merge_backup
+*.un~
+*.diff
+*.local
+*.lock
+*.log
+
+# ====================
+# Docker
+# ====================
+*.container
+*.pid
+docker-compose.override.yml
+
+# ====================
+# Other package managers
+# ====================
+.pnpm-debug.log
+package-lock.json
+yarn.lock
+
+# ====================
+# Monorepos (TurboRepo / Nx / etc.)
+# ====================
+node_modules/
+dist/
+build/
+out/
+.cache/
+turbo/
+nx-cache/
+
+# ====================
+# IDEs
+# ====================
+.idea/
+.vscode/
+*.code-workspace
+*.sublime-workspace
+*.sublime-project
+
+# ====================
+# Misc
+# ====================
+logs/
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.tgz
+*.zip
+*.tar
+*.gz
+*.rar
+*.7z
+*.bak
+*.tmp
+*.swp
+*.tmp.*

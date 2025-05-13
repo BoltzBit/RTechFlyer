@@ -1,0 +1,53 @@
+name: Deploy to dev
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      IMAGE_NAME: rtech-flyer-api
+      IMAGE_TAG: dev
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{env.IMAGE_TAG}}
+
+      - name: Deploy to Dev Server
+        run: |
+          ssh ${{ secrets.DEV_SSH_USER }}@${{ secrets.DEV_SSH_HOST }} << 'EOF'
+            docker pull ${{ secrets.DOCKER_REGISTRY }}/rtech-flyer-api:dev
+            docker stop rtech-flyer-api || true
+            docker rm rtech-flyer-api || true
+            docker run -d \
+              --name rtech-flyer-api-dev \
+              -p 5000:5000 \
+              -e ASPNETCORE_ENVIRONMENT=Development \
+              -e AWS__AccessKey=${{ secrets.AWS_ACCESS_KEY_ID }} \
+              -e AWS__SecretKey=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+              -e AWS__Region=${{ secrets.AWS_REGION }} \
+              -e ASPNETCORE_HTTP_PORTS=5000 \
+              ${{ secrets.DOCKER_REGISTRY }}/rtech-flyer-api:dev
+            EOF

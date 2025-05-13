@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - AWS__AccessKey=${AWS_ACCESS_KEY_ID}
+      - AWS__SecretKey=${AWS_SECRET_ACCESS_KEY}
+      - AWS__SecretKey=${AWS_REGION}
+      - Email__Sender=${AWS_REGION}
+      - Email__To=${AWS_REGION}
+      - ASPNETCORE_HTTP_PORTS=5000
+      - ASPNETCORE_ENVIRONMENT=Development
