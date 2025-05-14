@@ -25,7 +25,7 @@ jobs:
 
       - name: Cache
         uses: actions/cache@v4
-        wiht:
+        with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
