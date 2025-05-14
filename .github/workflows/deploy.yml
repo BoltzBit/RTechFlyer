@@ -15,7 +15,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  deploy:
+    needs: ["Build"]
     runs-on: ubuntu-latest
 
     env:
