@@ -57,6 +57,7 @@ public static class MailParams
                 {
                     Charset = "UTF-8",
                     //TODO: Inserir as informacoes que estao faltando do MailRequest
+                    //TODO: fazer os templates de email
                     Data = @$"<p>{mailRequest.Message}</p>"
                 }
             };
@@ -79,6 +80,7 @@ public static class MailParams
                 {
                     Charset = "UTF-8",
                     //TODO: Inserir as informacoes que estao faltando do MailRequest
+                    //TODO: fazer os templates de email
                     Data = @"<p>We are excide to work with you, we will contact you as son as possible.</p>"
                 }
             };
