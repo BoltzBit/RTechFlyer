@@ -2,7 +2,7 @@ name: Push image to docker
 
 on:
   workflow_run:
-    workflows: ["Build"]
+    workflows: [".NET"]
     types:
       - completed
 
